@@ -38,6 +38,7 @@ yarn-error.log*
 # python virtualenv 
 .venv 
 /venv
+*/venv
 
 # sqlite file
 db.sqlite3
