@@ -44,14 +44,14 @@
 }
 
 .register-input:focus {
-  border-color: #007bff;
+  border-color: #de0030;
   outline: none;
 }
 
 /* Button Styling */
 .register-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #de0030;
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -62,7 +62,7 @@
 }
 
 .register-button:hover {
-  background-color: #0056b3;
+  background-color: #de0030;
 }
 
 /* Login Button Styling (Positioned in top-right corner) */
@@ -76,8 +76,8 @@
 .login-button {
   padding: 8px 16px;
   background-color: transparent;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #de0030;
+  color: #de0030;
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;

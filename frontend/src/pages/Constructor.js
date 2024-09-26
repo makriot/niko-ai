@@ -1,83 +1,56 @@
 import React, { useState } from "react";
 import "../styles/Constructor.css"; // Подключим CSS для стилизации
 
-const CakeDesigner = () => {
-  const [activeTab, setActiveTab] = useState("design");
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [generatedImage, setGeneratedImage] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [prompt, setPrompt] = useState("");
+import Replicate from "replicate";
 
+const replicate = new Replicate({
+  auth: process.env.REPLICATE_API_TOKEN,
+});
+
+
+const CakeDesigner = () => {
+  const [activeTab, setActiveTab] = useState("design"); // Управление активной вкладкой
+  const [uploadedImage, setUploadedImage] = useState(null); // Для загруженной картинки
+  const [generatedImage, setGeneratedImage] = useState(null); // Для сгенерированной картинки
+  const [selectedOption, setSelectedOption] = useState(""); // Состояние для выбранного варианта начинки
+
+  // Функция для переключения вкладок
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
   };
 
-  // Обработчик загрузки изображения
+  // Функция для загрузки фото
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setUploadedImage(reader.result);
+        setUploadedImage(reader.result); // Сохраняем изображение в состоянии
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Отправка данных на сервер и получение сгенерированного изображения
-  const handleGenerate = async () => {
-    if (!uploadedImage || !prompt) {
-      alert("Загрузите изображение и введите текст!");
-      return;
-    }
-  
-    try {
-      // Преобразуем base64 обратно в файл (Blob)
-      const file = dataURLtoFile(uploadedImage, "uploaded_image.png");
-  
-      const formData = new FormData();
-      formData.append("image", file); // Отправляем файл
-      formData.append("prompt", prompt);
-  
-      const response = await fetch("http://localhost:8080/api/generate-image", {
-        method: "POST",
-        body: formData,
-      });
-  
-      if (!response.ok) {
-        throw new Error("Ошибка при генерации изображения");
-      }
-  
-      const data = await response.json();
-      setGeneratedImage(`http://localhost:8080${data.imageUrl}`); // Используем полный путь к изображению
-    } catch (error) {
-      console.error("Ошибка при генерации:", error);
-    }
+  // Функция для генерации нового изображения
+  const handleGenerate = () => {
+    // Здесь должно быть обращение к API для получения нового изображения
+    const randomImage = "https://source.unsplash.com/featured/?cake";
+    setGeneratedImage(randomImage);
   };
-  
-  // Вспомогательная функция для преобразования base64 в файл (Blob)
-  function dataURLtoFile(dataurl, filename) {
-    let arr = dataurl.split(","),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new Blob([u8arr], { type: mime });
-  }
 
+  // Функция для обработки выбора в select
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  // Функция для обработки подтверждения выбора
   const handleSubmit = () => {
     alert(`Вы выбрали: ${selectedOption}`);
   };
 
   return (
     <div className="cake-designer">
+      {/* Вкладки */}
       <div className="tabs">
         <button
           className={`tab-button ${activeTab === "filling" ? "active" : ""}`}
@@ -93,6 +66,7 @@ const CakeDesigner = () => {
         </button>
       </div>
 
+      {/* Содержимое вкладок */}
       {activeTab === "filling" ? (
         <div className="tab-content">
           <h2>Выберите форму для торта</h2>
@@ -131,11 +105,10 @@ const CakeDesigner = () => {
               type="text"
               placeholder="Что добавить?"
               className="prompt-input"
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
             />
           </div>
 
+          {/* Кнопка для генерации изображения */}
           <div className="generate-section">
             <button className="generate-button" onClick={handleGenerate}>
               Сгенерировать
@@ -150,6 +123,7 @@ const CakeDesigner = () => {
         </div>
       )}
 
+      {/* Кнопка для отправки */}
       <div className="submit-section">
         <button className="submit-button">Отправить кондитерам</button>
       </div>

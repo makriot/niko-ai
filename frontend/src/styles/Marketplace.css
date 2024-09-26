@@ -1,31 +1,32 @@
-/* General layout */
+/* General Styles */
 .marketplace {
-  font-family: Arial, sans-serif;
+  background-color: white;
+  min-height: 100vh;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: white;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
 }
 
 .logo {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
 }
 
 .search-container {
-  flex-grow: 3;
-  margin-left: 10px;
+  flex-grow: 1;
+  margin: 0 40px;
 }
 
 .search-input {
-  width: 30%;
+  width: 100%;
   padding: 8px;
-  border-radius: 5px;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .profile-icon {
@@ -33,113 +34,105 @@
   font-size: 24px;
 }
 
+/* Profile Menu */
 .profile-menu {
   position: absolute;
-  top: 60px;
+  top: 80px;
   right: 20px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background-color: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 10;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .profile-menu button {
   display: block;
   width: 100%;
-  padding: 10px;
-  background: none;
-  border: none;
+  padding: 10px 20px;
   text-align: left;
+  border: none;
+  background-color: white;
   cursor: pointer;
   font-size: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-menu button:last-child {
+  border-bottom: none;
 }
 
 .profile-menu button:hover {
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
 }
 
+/* Main Content */
 .main-content {
+  padding: 40px;
+}
+
+.top-half {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-}
-
-/* Increase the size of the top-half background */
-.top-half {
-  background-color: #84a292;
-  display: flex;
-  justify-content: center;
-  padding: 100px; /* Increase padding for more space */
-  height: 200px; /* Set a larger height */
-  align-items: center; /* Ensure buttons are vertically aligned */
-}
-
-/* Increase the size of the action buttons */
-.action-button {
-  padding: 70px; /* Increased padding to make the buttons larger */
-  background-color: #d3d3d3;
-  border-radius: 120px;
-  border: none;
-  margin: 30px;
-  font-size: 30px; /* Increased font size */
-  cursor: pointer;
-  width: 400px; /* Set equal width */
-  height: 200px; /* Set equal height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Hover effect for buttons */
-.action-button:hover {
-  background-color: #b0b0b0;
+  align-items: flex-start; /* Align items to the left */
+  margin-bottom: 20px;
 }
 
 .bottom-half {
   display: flex;
-  flex-grow: 1;
-  position: relative;
+  justify-content: space-between;
 }
 
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px;
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .product {
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  margin: 10px;
-  padding: 20px;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 50px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
-/* Position filter button on the left */
-.filter-button {
-  position: absolute;
-  top: 20px;
-  left: 20px; /* Moved to the left */
-  font-size: 40px;
+/* Greeting Text */
+.greeting-text {
+  font-size: 24px;
+  margin-bottom: 20px; /* Space between text and button */
+  color: #333;
+}
+
+/* Action Button */
+.action-button {
+  padding: 40px 80px; /* Increase the padding for a larger button */
+  background-color: #de0030;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 18px; /* Increase the font size */
+  margin: 0; /* Move button to the left */
+}
+
+.action-button:hover {
+  background-color: #c90029;
+}
+
+/* Filter button */
+.filter-button {
+  cursor: pointer;
+  font-size: 24px;
 }
 
 .filter-panel {
   position: absolute;
-  top: 50px;
-  left: 0; /* Panel starts from the left side */
-  width: 300px;
-  background-color: white;
-  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  top: 80px;
+  right: 0;
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
   padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .filter-content {
@@ -148,14 +141,14 @@
 }
 
 .filter-content button {
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #e0e0e0;
+  background-color: #de0030;
+  color: white;
   border: none;
-  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
 .filter-content button:hover {
-  background-color: #d0d0d0;
+  background-color: #c90029;
 }

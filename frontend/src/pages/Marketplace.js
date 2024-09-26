@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "../styles/Marketplace.css";
+import "../styles/Marketplace.css"; // Make sure the path is correct
 import { useNavigate } from "react-router-dom";
 
 const Marketplace = () => {
   const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
   const [isFilterOpen, setFilterOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!isProfileMenuOpen);
@@ -14,14 +15,16 @@ const Marketplace = () => {
     setFilterOpen(!isFilterOpen);
   };
 
-  const navigate = useNavigate();
-
   const handleConstructorButtonClick = () => {
     navigate("/constructor"); // Navigate to the /constructor page
   };
 
   const handleRegisterBakerButtonClick = () => {
-    navigate("/register-baker"); // Navigate to the /constructor page
+    navigate("/register-baker"); // Navigate to the /register-baker page
+  };
+
+  const handleRegisterClientButtonClick = () => {
+    navigate("/register-client"); // Navigate to the /register-client page
   };
 
   return (
@@ -30,7 +33,7 @@ const Marketplace = () => {
       <header className="header">
         <div className="logo">NIKO</div>
         <div className="search-container">
-          <input type="text" placeholder="Поиск" className="search-input" />
+          <input type="text" placeholder="Search" className="search-input" />
         </div>
         <div className="profile-icon" onClick={toggleProfileMenu}>
           <span>&#x1F464;</span> {/* Profile icon */}
@@ -40,27 +43,26 @@ const Marketplace = () => {
       {/* Profile Menu */}
       {isProfileMenuOpen && (
         <div className="profile-menu">
-          <button>Клиентам</button>
-          <button onClick={handleRegisterBakerButtonClick}>
-            Войти / Зарегистрироваться
+          <button onClick={handleRegisterClientButtonClick}>
+            I'm a Client
           </button>
-          <button>Партнерам</button>
-          <button>Войти как магазин</button>
-          <button>Разместить свои товары</button>
+          <button onClick={handleRegisterBakerButtonClick}>I'm a Baker</button>
+          <button>Partners</button>
+          <button>Login as a Shop</button>
+          <button>List your Products</button>
         </div>
       )}
 
       {/* Main Content */}
       <div className="main-content">
         <div className="top-half">
+          <h2 className="greeting-text">What are you up to today?</h2>
           <button
             className="action-button"
             onClick={handleConstructorButtonClick}
           >
-            Конструктор
+            Constructor
           </button>
-
-          {/* <button className="action-button">Сгенерировать дизайн</button> */}
         </div>
 
         <div className="bottom-half">
@@ -80,14 +82,14 @@ const Marketplace = () => {
           {isFilterOpen && (
             <div className="filter-panel">
               <div className="filter-content">
-                <h3>Тип кондитерского изделия</h3>
-                <button>Торты</button>
-                <button>Кейкпопсы</button>
-                <button>Пирожные</button>
-                <button>Бенто-торт</button>
-                <button>Трайфл</button>
-                <button>Макаруны</button>
-                <button>Десертные сеты</button>
+                <h3>Type of Pastry</h3>
+                <button>Cakes</button>
+                <button>Cake Pops</button>
+                <button>Pastries</button>
+                <button>Bento Cake</button>
+                <button>Trifle</button>
+                <button>Macaroons</button>
+                <button>Dessert Sets</button>
               </div>
             </div>
           )}
