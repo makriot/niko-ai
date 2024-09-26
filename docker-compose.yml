@@ -1,4 +1,12 @@
 services:
+  # directus:
+  #   image: directus/directus:latest
+  #   environment:
+  #     CORS_ENABLED: 'true'
+  #     CORS_ORIGIN: 'https://niko-ai.ru:3000' # Replace with your frontend URL
+  #     CORS_METHODS: 'GET,POST,PATCH,DELETE'
+  #     CORS_ALLOWED_HEADERS: 'Content-Type,Authorization'
+  #     CORS_EXPOSED_HEADERS: 'Content-Range'
 
 
   nginx:

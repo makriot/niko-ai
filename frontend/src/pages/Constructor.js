@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Constructor.css"; // Подключим CSS для стилизации
+import Replicate from "replicate";
 
 const CakeDesigner = () => {
   const [activeTab, setActiveTab] = useState("design"); // Управление активной вкладкой
@@ -11,6 +12,8 @@ const CakeDesigner = () => {
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
   };
+
+  const replicate = new Replicate();
 
   // Функция для загрузки фото
   const handleImageUpload = (e) => {
@@ -25,9 +28,18 @@ const CakeDesigner = () => {
   };
 
   // Функция для генерации нового изображения
-  const handleGenerate = () => {
-    // Здесь должно быть обращение к API для получения нового изображения
-    const randomImage = "https://source.unsplash.com/featured/?cake";
+  const handleGenerate = async () => {
+    console.log("Running the model...");
+    const output = await replicate.run(
+      "black-forest-labs/flux-dev",
+      {
+        input: {
+          prompt: "Big cookie pussy boy",
+        },
+      }
+    );
+    // Здесь должно быть обращение к API для получения нового изображения output[0]
+    const randomImage = output[0];
     setGeneratedImage(randomImage);
   };
 
