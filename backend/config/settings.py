@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['95.140.147.161', 'niko-ai.ru']
 
+# Defines to keep Django fully open or closed (is it working?)
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -47,7 +49,8 @@ INSTALLED_APPS = [
     # local Apps,
     'accounts',
     'articles',
-    'comments'
+    'comments',
+    'niko'
 ]
 
 MIDDLEWARE = [
@@ -134,6 +137,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+# Media files
+
+# MEDIA_URL = '/media/'
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
