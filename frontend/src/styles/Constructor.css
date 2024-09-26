@@ -1,0 +1,96 @@
+.cake-designer {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: #ddd;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #d33a56;
+  color: white;
+}
+
+.tab-content {
+  margin-bottom: 30px;
+}
+
+.upload-section {
+  margin-bottom: 20px;
+}
+
+.uploaded-image img {
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.generate-section {
+  margin-bottom: 20px;
+}
+
+.generate-button {
+  background-color: #d33a56;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.generate-button:hover {
+  background-color: #b22a44;
+}
+
+.generated-image img {
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.submit-section {
+  margin-top: 30px;
+}
+
+.submit-button {
+  background-color: #d33a56;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #b22a44;
+}
+
+.generate-section {
+  margin-top: 10px;
+}
+
+.prompt-container {
+  flex-grow: 3;
+  margin-left: 10px;
+}
+
+.prompt-input {
+  width: 50%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
