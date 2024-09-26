@@ -12,7 +12,9 @@ COPY . /app
 # Install dependencies
 RUN sudo apt-get -y install npm
 
-RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object
+RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object && npm install replicate && npm install openai
+
+RUN export REPLICATE_API_TOKEN=r8_97c3ovW0QfEvjKYV1biVnL5Cm7qBE3x47BC2H
 
 
 # Copy everything to the container
