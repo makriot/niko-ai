@@ -18,7 +18,7 @@ const RegisterClient = () => {
         <div className="profile-icon">&#x1F464;</div>
       </header>
 
-      <h1 className="title">REGISTRATION</h1>
+      <h1 className="title">Register As Client</h1>
 
       <div className="role-buttons">
         <button className="role-button active">I'm a Client</button>

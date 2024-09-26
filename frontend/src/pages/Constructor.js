@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Constructor.css"; // Подключим CSS для стилизации
 
-import Replicate from "replicate";
-
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN,
-});
-
-
 const CakeDesigner = () => {
   const [activeTab, setActiveTab] = useState("design"); // Управление активной вкладкой
   const [uploadedImage, setUploadedImage] = useState(null); // Для загруженной картинки

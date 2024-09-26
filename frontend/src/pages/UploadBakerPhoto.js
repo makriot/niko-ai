@@ -1,28 +1,30 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+// src/pages/UploadBakerPhoto.js
+import React, { useState } from "react";
 import "../styles/UploadPhoto.css";
 
 const UploadBakerPhoto = () => {
-  const navigate = useNavigate();
+  const [photo, setPhoto] = useState(null);
 
-  const handleUpload = (event) => {
-    event.preventDefault();
-    // Handle photo upload logic here
-    // For now, just navigate back or to another page
-    navigate("/marketplace"); // Change this to where you want to navigate after upload
+  const handlePhotoUpload = (e) => {
+    setPhoto(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!photo) {
+      alert("Please upload a photo!");
+      return;
+    }
+    alert("Registration Complete!");
   };
 
   return (
-    <div className="upload-photo-page">
-      <h1 className="title">UPLOAD BAKER PHOTO</h1>
-      <form onSubmit={handleUpload}>
-        <div className="photo-upload">
-          <input type="file" id="upload-photo" required />
-          <label htmlFor="upload-photo">Add Photo</label>
-        </div>
-        <button type="submit" className="submit-button">
-          UPLOAD
-        </button>
+    <div className="upload-photo-container">
+      <h2>Upload Your Bakery's Photo</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="file" onChange={handlePhotoUpload} accept="image/*" />
+        {photo && <img src={photo} alt="Bakery Preview" className="preview" />}
+        <button type="submit">Complete Registration</button>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 /* General Styles */
 .marketplace {
   background-color: white;
-  min-height: 100vh;
+  min-height: 12vh;
 }
 
 .header {
@@ -24,14 +24,14 @@
 
 .search-input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .profile-icon {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 /* Profile Menu */
@@ -79,20 +79,29 @@
 
 .bottom-half {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Stack filter and product list vertically */
 }
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(220px, 1fr)
+  ); /* Responsive grid */
   gap: 10px;
 }
 
 .product {
-  padding: 50px;
+  padding: 20px; /* Reduced padding for smaller screens */
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   text-align: center;
+  border-radius: 4px; /* Added border-radius for rounded corners */
+  transition: transform 0.2s; /* Added hover effect */
+}
+
+.product:hover {
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 /* Greeting Text */
@@ -151,4 +160,49 @@
 
 .filter-content button:hover {
   background-color: #c90029;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack header elements vertically on small screens */
+  }
+
+  .search-container {
+    margin: 10px 0; /* Add margin for the search input */
+  }
+
+  .main-content {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .product-list {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    ); /* Fewer columns on smaller screens */
+  }
+
+  .product {
+    padding: 15px; /* Smaller padding for product cards */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 20px; /* Smaller logo on very small screens */
+  }
+
+  .greeting-text {
+    font-size: 20px; /* Smaller greeting text */
+  }
+
+  .action-button {
+    width: 100%; /* Full width button */
+    padding: 30px; /* Smaller padding */
+  }
+
+  .filter-button {
+    font-size: 20px; /* Smaller filter button */
+  }
 }

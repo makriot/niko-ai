@@ -1,6 +1,6 @@
 .cake-designer {
   width: 100%;
-  margin: 0 auto;
+  margin: 100 auto;
   text-align: center;
 }
 
@@ -22,11 +22,12 @@
 
 .tab-button.active {
   background-color: #c90029;
+  margin: 7 10px;
   color: white;
 }
 
 .tab-content {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .upload-section {
@@ -39,13 +40,13 @@
 }
 
 .generate-section {
-  margin-bottom: 20px;
+  margin-bottom: 230px;
 }
 
 .generate-button {
   background-color: #c90029;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 30px;
   font-size: 18px;
   border: none;
   cursor: pointer;

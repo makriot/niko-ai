@@ -48,8 +48,6 @@ const Marketplace = () => {
           </button>
           <button onClick={handleRegisterBakerButtonClick}>I'm a Baker</button>
           <button>Partners</button>
-          <button>Login as a Shop</button>
-          <button>List your Products</button>
         </div>
       )}
 
