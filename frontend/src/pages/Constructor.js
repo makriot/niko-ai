@@ -7,6 +7,7 @@ const CakeDesigner = () => {
   const [uploadedImage, setUploadedImage] = useState(null); // Для загруженной картинки
   const [generatedImage, setGeneratedImage] = useState(null); // Для сгенерированной картинки
   const [selectedOption, setSelectedOption] = useState(""); // Состояние для выбранного варианта начинки
+  const [selectedOption2, setSelectedOption2] = useState(""); // Состояние для выбранного варианта формы
 
   // Функция для переключения вкладок
   const handleTabSwitch = (tab) => {
@@ -48,6 +49,10 @@ const CakeDesigner = () => {
     setSelectedOption(event.target.value);
   };
 
+  const handleChange2 = (event) => {
+    setSelectedOption2(event.target.value);
+  };
+
   // Функция для обработки подтверждения выбора
   const handleSubmit = () => {
     alert(`You have chosen: ${selectedOption}`);
@@ -76,8 +81,14 @@ const CakeDesigner = () => {
         <div className="tab-content">
           <h2>Choose the shape for the cake</h2>
           <div className="design-options">
-            <button>Circle</button>
-            <button>Square</button>
+            <select value={selectedOption2} onChange={handleChange2}>
+              <option value="" disabled>
+                -- Choose --
+              </option>
+              <option value="option1">Circle</option>
+              <option value="option2">Square</option>
+              <option value="option3">Heart</option>
+            </select>
           </div>
 
           <div>
@@ -92,7 +103,7 @@ const CakeDesigner = () => {
               <option value="option3">Cheesecake</option>
               <option value="option3">Cream cheese</option>
             </select>
-            <button onClick={handleSubmit}>Confirm</button>
+            {/* <button onClick={handleSubmit}>Confirm</button> */}
           </div>
         </div>
       ) : (
@@ -110,7 +121,7 @@ const CakeDesigner = () => {
           <div className="prompt-container">
             <input
               type="text"
-              placeholder="Что добавить?"
+              placeholder="Text prompt"
               className="prompt-input"
             />
           </div>
