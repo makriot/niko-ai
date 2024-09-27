@@ -34,7 +34,7 @@ const CakeDesigner = () => {
       "black-forest-labs/flux-dev",
       {
         input: {
-          prompt: "Big cookie pussy boy",
+          prompt: "Big cake with unicorn on the top",
         },
       }
     );
@@ -50,7 +50,7 @@ const CakeDesigner = () => {
 
   // Функция для обработки подтверждения выбора
   const handleSubmit = () => {
-    alert(`Вы выбрали: ${selectedOption}`);
+    alert(`You have chosen: ${selectedOption}`);
   };
 
   return (
@@ -61,42 +61,44 @@ const CakeDesigner = () => {
           className={`tab-button ${activeTab === "filling" ? "active" : ""}`}
           onClick={() => handleTabSwitch("filling")}
         >
-          Начинка
+          Filling
         </button>
         <button
           className={`tab-button ${activeTab === "design" ? "active" : ""}`}
           onClick={() => handleTabSwitch("design")}
         >
-          Дизайн
+          Design
         </button>
       </div>
 
       {/* Содержимое вкладок */}
       {activeTab === "filling" ? (
         <div className="tab-content">
-          <h2>Выберите форму для торта</h2>
+          <h2>Choose the shape for the cake</h2>
           <div className="design-options">
-            <button>Круглая</button>
-            <button>Квадратная</button>
+            <button>Circle</button>
+            <button>Square</button>
           </div>
 
           <div>
-            <h2>Выберите начинку для вашего торта</h2>
+            <h2>Choose the filling for your cake</h2>
             <select value={selectedOption} onChange={handleChange}>
               <option value="" disabled>
-                -- Выберите --
+                -- Choose --
               </option>
-              <option value="option1">Вариант 1</option>
-              <option value="option2">Вариант 2</option>
-              <option value="option3">Вариант 3</option>
+              <option value="option1">Chocolate</option>
+              <option value="option2">Chocolate-nut mousse</option>
+              <option value="option3">Berry mousse</option>
+              <option value="option3">Cheesecake</option>
+              <option value="option3">Cream cheese</option>
             </select>
-            <button onClick={handleSubmit}>Подтвердить</button>
+            <button onClick={handleSubmit}>Confirm</button>
           </div>
         </div>
       ) : (
         <div className="tab-content">
           <div className="upload-section">
-            <h3>Вставьте фото</h3>
+            <h3>Upload a photo</h3>
             <input type="file" accept="image/*" onChange={handleImageUpload} />
             {uploadedImage && (
               <div className="uploaded-image">
@@ -116,11 +118,11 @@ const CakeDesigner = () => {
           {/* Кнопка для генерации изображения */}
           <div className="generate-section">
             <button className="generate-button" onClick={handleGenerate}>
-              Сгенерировать
+              Generate
             </button>
             {generatedImage && (
               <div className="generated-image">
-                <h3>Сгенерированное изображение:</h3>
+                <h3>Generated image:</h3>
                 <img src={generatedImage} alt="Generated" />
               </div>
             )}
@@ -130,7 +132,7 @@ const CakeDesigner = () => {
 
       {/* Кнопка для отправки */}
       <div className="submit-section">
-        <button className="submit-button">Отправить кондитерам</button>
+        <button className="submit-button">Send to the bakers</button>
       </div>
     </div>
   );
